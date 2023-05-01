@@ -18,7 +18,7 @@ $course = get_course($course_id);
 
 // fetch the instructor details for the current course
 $instructor_id = $course['instructor_id'];
-$get_instructor = mysqli_query($conn, "SELECT * FROM instructor WHERE id = $instructor_id");
+$get_instructor = mysqli_query($conn, "SELECT * FROM instructor WHERE id = '$instructor_id'");
 $instructor = mysqli_fetch_assoc($get_instructor);
 
 if (isset($_POST["enroll"])) {
@@ -267,17 +267,16 @@ mysqli_stmt_close($stmt);
                                         </a>
                                     </div>
                                     <div class="player__embed d-none">
-                                        <iframe class="embed-responsive-item" src="<?php echo $course['video_link'] ?>" allowfullscreen=""></iframe>
+                                        <video src="<?php echo $video_link;?>" controls></video>
                                     </div>
                                 </div>
                             </div>
-
                             <div class="d-flex flex-wrap align-items-end mb-16pt">
                                 <h1 class="text-white flex m-0">Introduction to <?php echo $course["course_title"]; ?></h1>
                                 <p class="h1 text-white-50 font-weight-light m-0">50:13</p>
                             </div>
 
-                            <p class="hero__lead measure-hero-lead text-white-50 mb-24pt"><?php echo $course["course_introduction"]; ?></p>
+                            <p class="hero__lead measure-hero-lead text-white-50 mb-24pt"><?php echo substr($course["course_introduction"], 0, 100); ?></p>
                         </div>
                     </div>
                     <div class="navbar navbar-expand-sm navbar-light bg-white border-bottom-2 navbar-list p-0 m-0 align-items-center">

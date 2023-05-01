@@ -248,10 +248,7 @@ mysqli_close($conn);
                                 <p class="text-breadcrumb">Account Management</p>
                             </div>
                             <p class="d-sm-none"></p>
-                            <a href="#" class="btn btn-outline-secondary flex-column">
-                                Need Help?
-                                <span class="btn__secondary-text">Contact us</span>
-                            </a>
+                            
                         </div>
                     </div>
 

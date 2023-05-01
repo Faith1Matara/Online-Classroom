@@ -54,12 +54,12 @@ if (isset($_POST["save-course"])) {
             if ($stmt->execute()) {
                 // Store result
                 $stmt->store_result();
-                if ($stmt->num_rows == 0) {
+                if ($stmt->num_rows > 1) {
                     $course_title = htmlspecialchars(trim($_POST["course_title"]));
                 } else {
-                    $course_title_err = "Course title already exists.";
                 }
             } else {
+                $course_title_err = "Course does not exist.";
                 echo "Oops! Something went wrong. Please try again later.";
             }
 
@@ -161,11 +161,10 @@ if (isset($_POST["save-course"])) {
         $file_path = "./../Course/uploads/pdfs/" . $file_path;
     }
     // Validate video_link
-    if (!empty(trim($_POST["video_link"]))) {
-        $video_link = trim($_POST["video_link"]);
-        if (!filter_var($video_link, FILTER_VALIDATE_URL)) {
-            $video_link_err = "Please enter a valid video link.";
-        }
+    if (!empty($_POST["video_link"])){
+        $video_link = $_POST["video_link"];
+    } else {
+        $video_link_err = "Please Enter a link";
     }
 
     // Update course data in the database
@@ -438,7 +437,7 @@ if (isset($_POST["save-course"])) {
 <div class="card">
     <?php if(!empty($video_link)): ?>
         <div class="embed-responsive embed-responsive-16by9">
-            <iframe class="embed-responsive-item" src="<?php echo $video_link; ?>" allowfullscreen=""></iframe>
+            <video src="<?php echo $video_link; ?>" controls></video>
         </div>
     <?php endif; ?>
     <div class="card-body">
@@ -446,12 +445,6 @@ if (isset($_POST["save-course"])) {
             <label class="form-label">Video URL</label>
             <input type="text" class="form-control" name="video_link" value="<?php echo $video_link; ?>" placeholder="Enter Video URL">
             <span class="help-block text-warning"><?php echo $video_link_err; ?></span>
-        </div>
-        <div class="form-group">
-            <label class="form-label">Video File</label>
-            <input type="file" name="video_file">
-            <span class="help-block text-warning"><?php echo $video_file_err; ?></span>
-        </div>
     </div>
 </div>
 <div class="card">

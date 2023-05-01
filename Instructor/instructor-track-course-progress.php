@@ -14,7 +14,7 @@ function get_instructor_courses()
     global $conn;
     $instructor_id = $_SESSION["instructor_id"];
 
-    $sql = "SELECT * FROM enroll_students WHERE instructor_id = $instructor_id";
+    $sql = "SELECT DISTINCT course_id FROM enroll_students WHERE instructor_id = $instructor_id";
     $result = mysqli_query($conn, $sql);
 
     if (!$result) {
@@ -265,6 +265,7 @@ $courses = get_instructor_courses();
                                                                 $count_result = mysqli_fetch_assoc($count_query);
                                                                 $num_rows1 = $count_result['total'];
                                                                 echo $num_rows1 . "Student(s)";
+                                                                echo $course_id;
                                                                 ?>
                                                             </div>
                                                         </div>
@@ -343,7 +344,7 @@ $courses = get_instructor_courses();
                                         }
                                     ?>
                                         <tbody class="list">
-
+                                        <?php echo $course_id;?>
                                             <tr>
                                                 <td>
                                                     <div class="media flex-nowrap align-items-center">

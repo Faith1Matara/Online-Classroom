@@ -248,10 +248,7 @@ mysqli_close($conn);
                                 <p class="text-breadcrumb">Account Management</p>
                             </div>
                             <p class="d-sm-none"></p>
-                            <a href="#" class="btn btn-outline-secondary flex-column">
-                                Need Help?
-                                <span class="btn__secondary-text">Contact us</span>
-                            </a>
+
                         </div>
                     </div>
 
@@ -304,72 +301,89 @@ mysqli_close($conn);
                                 <input name="email" id="email" type="email" class="form-control" placeholder="Type a new email ..." value="<?php echo $email; ?>">
                                 <span class="help-block text-warning"><?php echo $email_err; ?></span>
                             </div>
-
-
-                            <button type="submit" name="update-changes" class="btn btn-primary">Save changes</button>
-                            </form>
                         </div>
                     </div>
+                            <div class="page-section">
+                                <div class="container page__container">
+                                    <div class="page-separator">
+                                        <div class="page-separator__text">Change Speciality</div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label" for="speciality">Speciality:</label>
+                                        <select id="speciality" name="speciality" type="text" class="form-control">
+                                            <option value="Design">Design</option>
+                                            <option value="Security">Security</option>
+                                            <option value="Networking">Networking</option>
+                                            <option value="Other">Other</option>
+                                        </select>
+                                        <span class="help-block text-warning"><?php echo $speciality_err; ?></span>
+                                    </div>
+                                
 
-                    <!-- Footer -->
+                                    <button type="submit" name="update-changes" class="btn btn-primary">Save changes</button>
+                                    </form>
+                                </div>
+                            </div>
 
-                    <div class="bg-white border-top-2 mt-auto">
-                        <div class="container page__container page-section d-flex flex-column">
-                            <p class="text-70 brand mb-24pt">
-                                <img class="brand-icon" src="./../Public/images/logo/black-70%402x.png" width="30" alt="Luma"> Online Classroom
-                            </p>
-                            <p class="measure-lead-max text-50 small mr-8pt">Online Classroom is a beautifully crafted user interface for modern Education Platforms, including Courses & Tutorials, Video Lessons, Student and Teacher Dashboard and more.</p>
-                            <p class="mb-8pt d-flex">
-                                <a href="#" class="text-70 text-underline mr-8pt small">Terms</a>
-                                <a href="#" class="text-70 text-underline small">Privacy policy</a>
-                            </p>
-                            <p class="text-50 small mt-n1 mb-0">Copyright 2023 &copy; All rights reserved.</p>
+                            <!-- Footer -->
+
+                            <div class="bg-white border-top-2 mt-auto">
+                                <div class="container page__container page-section d-flex flex-column">
+                                    <p class="text-70 brand mb-24pt">
+                                        <img class="brand-icon" src="./../Public/images/logo/black-70%402x.png" width="30" alt="Luma"> Online Classroom
+                                    </p>
+                                    <p class="measure-lead-max text-50 small mr-8pt">Online Classroom is a beautifully crafted user interface for modern Education Platforms, including Courses & Tutorials, Video Lessons, Student and Teacher Dashboard and more.</p>
+                                    <p class="mb-8pt d-flex">
+                                        <a href="#" class="text-70 text-underline mr-8pt small">Terms</a>
+                                        <a href="#" class="text-70 text-underline small">Privacy policy</a>
+                                    </p>
+                                    <p class="text-50 small mt-n1 mb-0">Copyright 2023 &copy; All rights reserved.</p>
+                                </div>
+                            </div>
+
+                            <!-- // END Footer -->
+
                         </div>
-                    </div>
+                        <!-- // END drawer-layout__content -->
 
-                    <!-- // END Footer -->
+                        <!-- Drawer -->
+
+
+                        <!-- // END Drawer -->
+
+                    </div>
+                    <!-- // END drawer-layout -->
 
                 </div>
-                <!-- // END drawer-layout__content -->
-
-                <!-- Drawer -->
-
-
-                <!-- // END Drawer -->
+                <!-- // END Header Layout Content -->
 
             </div>
-            <!-- // END drawer-layout -->
+            <!-- // END Header Layout -->
 
-        </div>
-        <!-- // END Header Layout Content -->
+            <!-- jQuery -->
+            <script src="./../Public/vendor/jquery.min.js"></script>
 
-    </div>
-    <!-- // END Header Layout -->
+            <!-- Bootstrap -->
+            <script src="./../Public/vendor/popper.min.js"></script>
+            <script src="./../Public/vendor/bootstrap.min.js"></script>
 
-    <!-- jQuery -->
-    <script src="./../Public/vendor/jquery.min.js"></script>
+            <!-- Perfect Scrollbar -->
+            <script src="./../Public/vendor/perfect-scrollbar.min.js"></script>
 
-    <!-- Bootstrap -->
-    <script src="./../Public/vendor/popper.min.js"></script>
-    <script src="./../Public/vendor/bootstrap.min.js"></script>
+            <!-- DOM Factory -->
+            <script src="./../Public/vendor/dom-factory.js"></script>
 
-    <!-- Perfect Scrollbar -->
-    <script src="./../Public/vendor/perfect-scrollbar.min.js"></script>
+            <!-- MDK -->
+            <script src="./../Public/vendor/material-design-kit.js"></script>
 
-    <!-- DOM Factory -->
-    <script src="./../Public/vendor/dom-factory.js"></script>
+            <!-- App JS -->
+            <script src="./../Public/Js/app.js"></script>
 
-    <!-- MDK -->
-    <script src="./../Public/vendor/material-design-kit.js"></script>
+            <!-- Preloader -->
+            <script src="./../Public/Js/preloader.js"></script>
 
-    <!-- App JS -->
-    <script src="./../Public/Js/app.js"></script>
-
-    <!-- Preloader -->
-    <script src="./../Public/Js/preloader.js"></script>
-
-    <!-- App Settings (safe to remove) -->
-    <!-- <script src="./../Public/js/app-settings.js"></script> -->
+            <!-- App Settings (safe to remove) -->
+            <!-- <script src="./../Public/js/app-settings.js"></script> -->
 </body>
 
 

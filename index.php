@@ -157,7 +157,7 @@ if (isset($_POST['send-feedback'])) {
                     </div>
                     <div class="mdk-box__content justify-content-center">
                         <div class="hero container page__container text-center py-112pt text-md-left">
-                            <h1 class="text-white text-shadow">Learn to Code</h1>
+                            <h1 class="text-white text-shadow">Become a Professional</h1>
                             <p class="lead measure-hero-lead mx-auto mx-md-0 text-white text-shadow mb-48pt">Business, Technology and Creative Skills taught by industry experts. Explore a wide range of skills with our professional tutorials.</p>
 
                             <a href=" ./Course/courses.php" class="btn btn-lg btn-white btn--raised mb-16pt">Browse Courses</a>

@@ -51,25 +51,24 @@ if (empty(trim($_POST["email"]))) {
     
 
     // Validate first_name
-if (empty(trim($_POST["first_name"]))) {
-    $first_name_err = "Please enter first name.";
-} else if (!preg_match("/^[a-zA-Z\s]*$/", $_POST['first_name'])) {
-    $first_name_err = "Only letters and white space allowed.";
-} else {
-    $first_name = trim($_POST['first_name']);
-}
-
-
-  // Validate last_name
-if (empty(trim($_POST["last_name"]))) {
-    $last_name_err = "Please enter a last name.";
-} else {
-    if (!preg_match("/^[a-zA-Z\s]+$/", $_POST['last_name'])) {
-        $last_name_err = "Only letters and white space allowed";
+    if (empty(trim($_POST["first_name"]))) {
+        $first_name_err = "Please enter first name.";
+    } else if (!preg_match("/^[\p{L}\s'-]+$/u", $_POST['first_name'])) {
+        $first_name_err = "Only letters, apostrophes, hyphens, and spaces are allowed.";
     } else {
-        $last_name = trim($_POST['last_name']);
+        $first_name = trim($_POST['first_name']);
     }
-}
+
+    // Validate last_name
+    if (empty(trim($_POST["last_name"]))) {
+        $last_name_err = "Please enter a last name.";
+    } else {
+        if (!preg_match("/^[\p{L}\s'-]+$/u", $_POST['last_name'])) {
+            $last_name_err = "Only letters, apostrophes, hyphens, and spaces are allowed.";
+        } else {
+            $last_name = trim($_POST['last_name']);
+        }
+    }
 
     // Validate password
     if (empty(trim($_POST["password"]))) {
@@ -275,7 +274,7 @@ if (empty(trim($_POST["last_name"]))) {
                             </div>
                         </div>
                     </div>
-    <script>
+    <!--<script>
         const nameInput = document.getElementById("name");
         const nameErr = document.getElementById("name-error");
         nameInput.addEventListener("keyup", function(){
@@ -289,7 +288,7 @@ if (empty(trim($_POST["last_name"]))) {
             const regex = /^[a-zA-Z]+$/;
             return regex.test(name);
         }
-    </script>
+    </script> -->
 
 
                     <!-- Footer -->
@@ -327,6 +326,101 @@ if (empty(trim($_POST["last_name"]))) {
 
     </div>
     <!-- // END Header Layout -->
+    <!-- Password check as user types -->
+<div class="form-group <?php echo (!empty($password_err)) ? 'has-error' : ''; ?>">
+   <!-- <label>Password</label>
+    <input type="password" name="password" class="form-control" value="<?php echo $password; ?>" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,16}$">
+    <span id="password-help" class="help-block text-warning"><?php echo $password_err; ?></span>-->
+</div>
+
+<script>
+    const passwordInput = document.querySelector('input[name="password"]');
+    const passwordHelp = document.querySelector('#password-help');
+    const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,16}$/;
+
+    passwordInput.addEventListener('input', () => {
+        const password = passwordInput.value;
+        const errors = [];
+
+        if (!passwordPattern.test(password)) {
+            if (password.length < 8) {
+                errors.push('Password must be at least 8 characters.');
+            } else if (password.length > 16) {
+                errors.push('Password must be no more than 16 characters.');
+            }
+            if (!/[a-z]/.test(password)) {
+                errors.push('Password must contain at least one lowercase letter.');
+            }
+            if (!/[A-Z]/.test(password)) {
+                errors.push('Password must contain at least one uppercase letter.');
+            }
+            if (!/[0-9]/.test(password)) {
+                errors.push('Password must contain at least one number.');
+            }
+            if (!/[!@#$%^&*_=+-]/.test(password)) {
+                errors.push('Password must contain at least one special character (!@#$%^&*_=+-).');
+            }
+        }
+
+        if (errors.length > 0) {
+            passwordHelp.textContent = errors.join(' ');
+            passwordHelp.classList.add('text-danger');
+        } else {
+            passwordHelp.textContent = '';
+            passwordHelp.classList.remove('text-danger');
+        }
+    });
+</script>
+
+
+<!-- Email checks as user types -->
+<div class="form-group <?php echo (!empty($email_err)) ? 'has-error' : ''; ?>">
+   <!-- <label>Email</label>
+    <input type="email" name="email" class="form-control" value="<?php echo $email; ?>">
+    <span id="email-help" class="help-block text-warning"><?php echo $email_err; ?></span>-->
+</div>
+
+<script>
+    const emailInput = document.querySelector('input[name="email"]');
+    const emailHelp = document.querySelector('#email-help');
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    emailInput.addEventListener('input', () => {
+        const email = emailInput.value;
+
+        if (!emailPattern.test(email)) {
+            emailHelp.textContent = 'Please enter a valid email address.';
+            emailHelp.classList.add('text-danger');
+        } else {
+            emailHelp.textContent = '';
+            emailHelp.classList.remove('text-danger');
+        }
+    });
+</script>
+
+<!-- firstname Checks as user types -->
+<div class="form-group <?php echo (!empty($firstname_err)) ? 'has-error' : ''; ?>">
+   <!-- <label>Firstnamename</label>
+    <input type="text" name="firstname" class="form-control" value="<?php echo $firstname; ?>">
+    <span id="firstname-help" class="help-block text-warning"><?php echo $firstname_err; ?></span>-->
+</div>
+
+<script>
+    const firstnameInput = document.querySelector('input[name="firstname"]');
+    const firstnameHelp = document.querySelector('#firstname-help');
+
+    firstnameInput.addEventListener('input', () => {
+        const firstname = firstnameInput.value;
+
+        if (/\d/.test(firstname)) {
+            firstnameHelp.textContent = 'firstname must not contain any numbers.';
+            firstnameHelp.classList.add('text-danger');
+        } else {
+            firstnameHelp.textContent = '';
+            firstnameHelp.classList.remove('text-danger');
+        }
+    });
+</script>
 
     <!-- jQuery -->
     <script src="./Public/vendor/jquery.min.js"></script>

@@ -19,7 +19,7 @@ $course = get_course($course_id);
 
 // fetch the instructor details for the current course
 $instructor_id = $course['instructor_id'];
-$get_instructor = mysqli_query($conn, "SELECT * FROM instructor WHERE id = $instructor_id");
+$get_instructor = mysqli_query($conn, "SELECT * FROM instructor WHERE id = '$instructor_id'");
 $instructor = mysqli_fetch_assoc($get_instructor);
 
 
@@ -201,7 +201,7 @@ mysqli_stmt_close($stmt);
                                 <div class="nav-item py-16pt py-sm-0">
                                     <div class="media flex-nowrap">
                                         <div class="media-left mr-16pt">
-                                            <a href="student-take-course.php"><img src="./../Public/images/paths/angular_64x64.png" width="40" alt="Angular" class="rounded"></a>
+                                            <a href="./student-take-lesson.php?id=<?php echo $course_id ?>;"><img src="./../Public/images/paths/angular_64x64.png" width="40" alt="Angular" class="rounded"></a>
                                         </div>
                                         <div class="media-body d-flex flex-column">
                                             <a href="student-take-course.php" class="card-title"><?php echo $course['course_title']; ?></a>

@@ -19,7 +19,7 @@ $course = get_course($course_id);
 
 // fetch the instructor details for the current course
 $instructor_id = $course['instructor_id'];
-$get_instructor = mysqli_query($conn, "SELECT * FROM instructor WHERE id = $instructor_id");
+$get_instructor = mysqli_query($conn, "SELECT * FROM instructor WHERE id = '$instructor_id'");
 $instructor = mysqli_fetch_assoc($get_instructor);
 
 

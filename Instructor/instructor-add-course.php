@@ -295,7 +295,7 @@ if (isset($_POST["save-course"])) {
 
                     <div class="nav navbar-nav flex-nowrap d-flex mr-16pt">
 
-                       
+
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link d-flex align-items-center dropdown-toggle" data-toggle="dropdown" data-caret="false">
 
@@ -342,7 +342,7 @@ if (isset($_POST["save-course"])) {
                                     <h2 class="mb-0">Add Course</h2>
 
                                     <ol class="breadcrumb p-0 m-0">
-                                        <li class="breadcrumb-item"><a href="./instructor-dashboard.php">Dashboard</a></li>
+                                        <li class="breadcrumb-item"><a href="./instructor-courses.php">Dashboard</a></li>
 
                                         <li class="breadcrumb-item active">
 
@@ -417,14 +417,13 @@ if (isset($_POST["save-course"])) {
                                     </div>
 
                                     <div class="card">
-                                        <div class="embed-responsive embed-responsive-16by9">
-                                            <iframe class="embed-responsive-item" src="<?php echo $video_link; ?>" allowfullscreen=""></iframe>
-                                        </div>
+
                                         <div class="card-body">
                                             <div class="form-group">
-                                                <label class="form-label">URL</label>
-                                                <input type="text" class="form-control" name="video_link" value="<?php echo $video_link; ?>" placeholder="Enter Video URL">
-                                                <span class="help-block text-warning"><?php echo $video_link_err; ?></span>
+                                                <label class="form-label">Video Upload</label>
+                                                <input type="file" accept="video/*" class="form-control" name="video_file" onchange="loadVideo(event)">
+                                                <span class="help-block text-warning"><?php echo $video_file_err; ?></span>
+                                                <video id="video-preview" style="display:none;" controls></video>
                                             </div>
                                         </div>
                                     </div>
@@ -510,7 +509,17 @@ if (isset($_POST["save-course"])) {
 
     </div>
     <!-- // END Header Layout -->
+   <script>
+    function loadVideo(event) {
+    var video = document.getElementById('video-preview');
+    var file = event.target.files[0];
+    var video_url = URL.createObjectURL(file);
+    video.src = video_url;
+    video.style.display = "block";
+    document.getElementsByName('video_link')[0].value = video_url;
+}
 
+  </script>
 
     <!-- jQuery -->
     <script src="./../Public/vendor/jquery.min.js"></script>

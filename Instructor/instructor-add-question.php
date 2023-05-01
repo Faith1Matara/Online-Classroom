@@ -386,17 +386,15 @@ if (isset($_GET['edit'])) {
                     </div>
                 </div>
 
-                <!-- // END Drawer -->
+                
 
             </div>
-            <!-- // END drawer-layout -->
+            
 
         </div>
-        <!-- // END Header Layout Content -->
-
+        
     </div>
-    <!-- // END Header Layout -->
-
+    
 
     <!-- jQuery -->
     <script src="./../Public/vendor/jquery.min.js"></script>

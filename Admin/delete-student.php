@@ -185,7 +185,7 @@ mysqli_close($conn);
                         <div class="container page__container">
                         <form method="post" class="col-sm-5 p-0">
                             <div class="page-separator">
-                                <div class="page-separator__text">Change Name</div>
+                                <div class="page-separator__text">Delete Name</div>
                             </div>
                             <div class="form-group">
                                 <label class="form-label" for="password">First Name:</label>
@@ -204,7 +204,7 @@ mysqli_close($conn);
                     <div class="page-section">
                         <div class="container page__container">
                             <div class="page-separator">
-                                <div class="page-separator__text">Change Email</div>
+                                <div class="page-separator__text">Delete Email</div>
                             </div>
                             <div class="form-group">
                                 <label class="form-label" for="email">Email:</label>

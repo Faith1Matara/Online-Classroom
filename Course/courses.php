@@ -181,7 +181,7 @@ $courses = get_courses(20);
                                                                     $sql1 = mysqli_query($conn, "SELECT * FROM achievements WHERE course_id = '$c_id' AND student_id = '$s_id'");
                                                                     $achv = mysqli_fetch_assoc($sql1);
                                                                     if ($achv) { ?>
-                                                                        <a href="./../Student/student-quiz-result-details.php?id=<?php echo $course['course_id']; ?>" class="btn btn-secondary h-50">COMPLETED</a>
+                                                                        <a href="./../Student/student-dashboard.php" class="btn btn-secondary h-50">COMPLETED</a>
                                                                     <?php } else { ?>
                                                                         <a href="./../Student/student-take-lesson.php?id=<?php echo $course['course_id']; ?>" class="btn btn-secondary h-50">CONTINUE</a>
                                                                     <?php } ?>

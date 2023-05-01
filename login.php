@@ -258,7 +258,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                                 name="password"
                                                type="password"
                                                class="form-control"
-                                               placeholder="Your first and last name ..."
+                                               placeholder="Enter your password ..."
                                                value="<?php echo $password; ?>">
                                                <span class="help-block text-warning"><?php echo $password_err; ?></span>
                                         <p class="text-right"><a href="student-code-reset.php"
